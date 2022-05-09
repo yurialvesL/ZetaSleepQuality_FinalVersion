@@ -1,0 +1,152 @@
+-- import to SQLite by running: sqlite3.exe db.sqlite3 -init sqlite.sql
+
+PRAGMA journal_mode = MEMORY;
+PRAGMA synchronous = OFF;
+PRAGMA foreign_keys = OFF;
+PRAGMA ignore_check_constraints = OFF;
+PRAGMA auto_vacuum = NONE;
+PRAGMA secure_delete = OFF;
+BEGIN TRANSACTION;
+
+DROP TABLE IF EXISTS `sol_ansiedade`;
+
+CREATE TABLE `sol_ansiedade` (
+`idSolucao` int NOT NULL ,
+`idUsu` int NOT NULL,
+`solucao1` tinyINTEGER NOT NULL,
+`solucao2` tinyINTEGER NOT NULL,
+`solucao3` tinyINTEGER NOT NULL,
+`solucao4` tinyINTEGER NOT NULL,
+PRIMARY KEY (`idSolucao`),
+FOREIGN KEY (`idUsu`) REFERENCES `usuarios` (`idUsuarios`) ON UPDATE CASCADE
+);
+LOCK TABLES `sol_ansiedade` WRITE;
+INSERT INTO `sol_ansiedade` VALUES (1,67,0,0,0,0),(2,68,0,0,0,0),(3,70,0,0,0,0),(4,76,0,0,0,0),(6,89,0,0,0,0),(7,90,0,0,0,0),(9,96,0,0,0,0),(14,98,0,0,0,0),(17,99,0,0,0,0),(18,101,0,0,0,0);
+UNLOCK TABLES;
+DROP TABLE IF EXISTS `sol_insonia`;
+
+CREATE TABLE `sol_insonia` (
+`idSolucao` int NOT NULL ,
+`idUsu` int NOT NULL,
+`solucao1` tinyINTEGER NOT NULL,
+`solucao2` tinyINTEGER NOT NULL,
+`solucao3` tinyINTEGER NOT NULL,
+`solucao4` tinyINTEGER NOT NULL,
+PRIMARY KEY (`idSolucao`),
+FOREIGN KEY (`idUsu`) REFERENCES `usuarios` (`idUsuarios`) ON UPDATE CASCADE
+);
+LOCK TABLES `sol_insonia` WRITE;
+INSERT INTO `sol_insonia` VALUES (4,97,1,1,0,0),(5,72,1,1,0,0),(6,98,0,0,0,0);
+UNLOCK TABLES;
+DROP TABLE IF EXISTS `sol_paralisiadosono`;
+
+CREATE TABLE `sol_paralisiadosono` (
+`idSolucao` int NOT NULL ,
+`idUsu` int NOT NULL,
+`solucao1` tinyINTEGER NOT NULL,
+`solucao2` tinyINTEGER NOT NULL,
+`solucao3` tinyINTEGER NOT NULL,
+`solucao4` tinyINTEGER NOT NULL,
+PRIMARY KEY (`idSolucao`),
+FOREIGN KEY (`idUsu`) REFERENCES `usuarios` (`idUsuarios`) ON UPDATE CASCADE
+);
+LOCK TABLES `sol_paralisiadosono` WRITE;
+UNLOCK TABLES;
+DROP TABLE IF EXISTS `sol_pesadelos`;
+
+CREATE TABLE `sol_pesadelos` (
+`idSolucao` int NOT NULL ,
+`idUsu` int NOT NULL,
+`solucao1` tinyINTEGER NOT NULL,
+`solucao2` tinyINTEGER NOT NULL,
+`solucao3` tinyINTEGER NOT NULL,
+`solucao4` tinyINTEGER NOT NULL,
+PRIMARY KEY (`idSolucao`),
+FOREIGN KEY (`idUsu`) REFERENCES `usuarios` (`idUsuarios`) ON UPDATE CASCADE
+);
+LOCK TABLES `sol_pesadelos` WRITE;
+INSERT INTO `sol_pesadelos` VALUES (2,40,1,1,1,1),(3,61,0,0,0,0),(4,66,0,0,0,0),(5,77,0,0,0,0),(6,79,0,0,0,0);
+UNLOCK TABLES;
+DROP TABLE IF EXISTS `sol_sindromepernasinquietas`;
+
+CREATE TABLE `sol_sindromepernasinquietas` (
+`idSolucao` int NOT NULL ,
+`idUsu` int NOT NULL,
+`solucao1` tinyINTEGER NOT NULL,
+`solucao2` tinyINTEGER NOT NULL,
+`solucao3` tinyINTEGER NOT NULL,
+`solucao4` tinyINTEGER NOT NULL,
+PRIMARY KEY (`idSolucao`),
+FOREIGN KEY (`idUsu`) REFERENCES `usuarios` (`idUsuarios`) ON UPDATE CASCADE
+);
+LOCK TABLES `sol_sindromepernasinquietas` WRITE;
+INSERT INTO `sol_sindromepernasinquietas` VALUES (1,65,0,0,0,0),(2,69,0,0,0,0),(3,71,0,0,0,0),(4,72,0,0,0,0),(5,73,0,0,0,0),(6,74,1,0,1,0),(8,87,0,0,0,0),(9,88,0,0,0,0),(10,91,0,0,0,0),(11,96,0,1,0,1),(12,94,0,1,1,1),(14,98,0,0,0,0),(15,66,0,0,0,0),(16,96,0,0,0,0),(17,98,0,0,0,0),(18,100,0,0,0,0);
+UNLOCK TABLES;
+DROP TABLE IF EXISTS `sol_sonambulismo`;
+
+CREATE TABLE `sol_sonambulismo` (
+`idSolucao` int NOT NULL ,
+`idUsu` int NOT NULL,
+`solucao1` tinyINTEGER NOT NULL,
+`solucao2` tinyINTEGER NOT NULL,
+`solucao3` tinyINTEGER NOT NULL,
+`solucao4` tinyINTEGER NOT NULL,
+PRIMARY KEY (`idSolucao`),
+FOREIGN KEY (`idUsu`) REFERENCES `usuarios` (`idUsuarios`) ON UPDATE CASCADE
+);
+LOCK TABLES `sol_sonambulismo` WRITE;
+INSERT INTO `sol_sonambulismo` VALUES (1,75,0,0,0,0),(3,94,0,0,0,0);
+UNLOCK TABLES;
+DROP TABLE IF EXISTS `sol_sonolenciadiurna`;
+
+CREATE TABLE `sol_sonolenciadiurna` (
+`idSolucao` int NOT NULL ,
+`idUsu` int NOT NULL,
+`solucao1` tinyINTEGER NOT NULL,
+`solucao2` tinyINTEGER NOT NULL,
+`solucao3` tinyINTEGER NOT NULL,
+`solucao4` tinyINTEGER NOT NULL,
+PRIMARY KEY (`idSolucao`),
+FOREIGN KEY (`idUsu`) REFERENCES `usuarios` (`idUsuarios`) ON UPDATE CASCADE
+);
+LOCK TABLES `sol_sonolenciadiurna` WRITE;
+INSERT INTO `sol_sonolenciadiurna` VALUES (2,98,0,0,0,0);
+UNLOCK TABLES;
+DROP TABLE IF EXISTS `usuarios`;
+
+CREATE TABLE `usuarios` (
+`idUsuarios` int NOT NULL ,
+`Nome` TEXT DEFAULT NULL,
+`Senha` TEXT NOT NULL,
+`CPF` TEXT NOT NULL,
+`Admin` tinyINTEGER NOT NULL,
+`Idade` tinyint DEFAULT NULL,
+`Sexo` tinyINTEGER DEFAULT NULL,
+`HorasdeSono` tinyint DEFAULT NULL,
+`Cafe` tinyINTEGER DEFAULT NULL,
+`AlcoolOuCigarro` tinyINTEGER DEFAULT NULL,
+`Exercícios` tinyint DEFAULT NULL,
+`SonoAgitado` tinyINTEGER DEFAULT NULL,
+`NvlStress` tinyint DEFAULT NULL,
+`Previsão` TEXT DEFAULT NULL,
+PRIMARY KEY (`idUsuarios`,`CPF`)
+);
+LOCK TABLES `usuarios` WRITE;
+INSERT INTO `usuarios` VALUES (23,'gdfdfdf','gfddfdgdf','456.789.321-45',0,0,0,4,0,0,7,1,0,'0'),(28,'masmd','efsfwef','11987654321',0,67,1,7,5,1,3,0,1,'0'),(29,'Adyel','ali123','546.546.546-54',1,25,1,6,5,1,4,1,3,'Ansiedade'),(30,'djknfkjdssd','mnb','123.456.468-79',0,45,1,9,8,1,7,0,5,'0'),(32,'Rubinho Do pneu','rubinho123','123.456.789-10',1,30,1,8,2,0,3,0,4,'nenhum'),(33,'Zezinho da chapuleta','ze123','987.456.321-11',0,25,1,3,5,1,3,0,8,'0'),(34,'Claudete','clau123','951.321.746-55',0,18,1,9,2,1,4,1,10,'0'),(35,'Ygnacio','ygnacio','357.285.246-91',0,20,1,7,4,1,3,1,8,'pernas inquietas'),(36,'Pinguelo','ali123','852.936.651-65',0,32,1,6,4,0,5,1,7,'[''pesadelos'']'),(37,'Dryser','adyel123','741.415.151-54',0,24,1,2,7,1,0,1,10,'[''pesadelos'']'),(38,'TulioMaravilha','tutu123','159.785.651-91',1,32,1,20,1,0,3,0,5,'nenhum'),(39,'Lionel ','asd123','879.416.513-21',0,17,1,8,2,0,5,0,2,'[''nenhum'']'),(40,'Seu Zé','121065','154.621.615-47',0,45,1,6,4,1,5,1,7,'[''pesadelos'']'),(41,'Yuris','ali123','123.165.569-16',0,25,1,7,2,1,5,0,7,'[''nenhum'']'),(42,'ignald','ali123','321.651.635-15',0,22,1,6,6,1,0,1,8,'[''ansiedade'']'),(43,'Alissandra','ali1225','259.918.308-19',0,44,0,6,1,0,0,1,8,']eaesa['),(44,'muliro','muliro123','165.498.618-97',0,25,1,5,4,1,3,1,8,']eaesa['),(45,'Romildo','134679','164.745.189-64',0,26,1,4,5,1,0,1,8,']sldsp['),(47,'Runior','ali1225','151.541.809-74',0,26,1,4,4,1,0,1,8,'[''pesadelos'']'),(48,'Porra','12345','326.823.790-50',0,22,1,4,4,1,0,1,7,'[''pesadelos'']'),(49,'ueyiu','yuri1225','626.263.262-62',0,23,1,4,3,1,0,1,6,'[''pesadelos'']'),(50,'kokok','123456','342.233.232-34',0,25,1,5,4,1,0,1,6,'[''pesadelos'']'),(51,'Biruleibe','49849884814','441.984.199-84',0,65,1,3,5,1,0,1,10,'[''pesadelos'']'),(52,'Arnaldo','1232332','846.584.658-46',0,51,1,4,4,1,0,1,6,'[''pesadelos'']'),(53,'yutu','213165','516.516.196-81',0,25,1,5,5,1,3,1,8,'[''ansiedade'']'),(54,'Yurisssssssssss','534534','564.985.196-26',0,26,1,5,6,1,0,1,8,'[''pesadelos'']'),(55,'Yurisoad2017','21651','874.198.146-81',0,24,1,5,4,1,0,1,8,'[''pesadelos'']'),(56,'fdsfdags','inind','685.465.165-16',0,26,1,5,4,1,0,1,7,'[''pesadelos'']'),(58,'jnfuenfui','433223423','435.354.654-76',0,35,1,4,3,1,0,1,9,'[''paralisia do sono'']'),(59,'rgfeger','65645645','756.756.765-75',0,24,1,5,4,1,0,1,7,'[''pesadelos'']'),(61,'yuei','4534563','231.289.412-98',0,25,1,4,5,1,0,1,8,'[''pesadelos'']'),(62,'Carl Johnson','1598753','636.516.516-51',0,26,1,4,7,1,4,1,9,'[''ansiedade'']'),(65,'Catarina','53453434','134.986.489-54',0,28,0,7,3,1,5,1,10,'[''pernas inquietas'']'),(66,'Big Smoke','1865498489','849.849.849-88',0,30,1,3,6,1,2,1,10,'[''pesadelos'']'),(67,'CARALHO','4534543534','165.468.466-99',0,28,1,8,6,1,4,1,9,'[''pernas inquietas'']'),(68,'Gabriel','ali123','561.965.198-16',0,28,1,6,5,0,1,1,5,'sonolencia diurna'),(69,'YuriSoad','ali123','231.651.541-65',0,54,1,7,5,1,3,1,10,'[''pernas inquietas'']'),(70,'KARALHO','123456','213.453.467-37',0,28,1,6,2,0,2,0,5,'ansiedade'),(71,'Yuri a','123456789','159.987.864-64',0,19,1,10,1,1,0,1,9,'[''pernas inquietas'']'),(72,'Yuri','ali123','316.516.516-56',0,25,1,6,5,0,1,0,5,'insonia'),(73,'SLA1','12345','132.165.419-81',0,22,1,8,2,1,4,1,7,'[''pernas inquietas'']'),(74,'Yuri ','159784623','321.651.695-81',0,22,1,7,3,1,0,1,10,'[''pernas inquietas'']'),(75,'jknvdskjf','5+5+5985','32.423.432-65',0,23,1,6,4,1,3,1,2,'[''sonambulismo'']'),(76,'dfsdfsd','5435543','53.425.346-34',0,20,1,6,5,1,4,1,10,'[''ansiedade'']'),(77,'355234552','2312321312','429.387.397-84',0,23,1,5,4,1,3,1,7,'[''pesadelos'']'),(79,'ronaldo','lmolwqmol','759.832.794-85',0,26,1,6,5,0,1,0,5,'insonia'),(84,'MEUVAI','534254','654.654.654-65',1,28,1,8,7,1,6,1,5,'pernas inquietas'),(85,'YuriFDS','43243242','156.165.165-15',1,45,1,8,7,1,6,1,5,'pernas inquietas'),(86,'sla3','52265265','564.651.656-51',1,45,1,6,5,1,4,1,3,'pernas inquietas'),(87,'SELOCO','422342','541.691.516-51',1,50,1,8,7,1,6,0,5,'pernas inquietas'),(88,'seucu','6343564','324.987.324-74',1,50,1,8,7,1,6,1,5,'pernas inquietas'),(89,'Chris','5165165','315.416.551-61',1,25,1,6,5,1,3,1,9,'ansiedade'),(90,'SLA2','231231212q','159.787.846-13',1,22,1,6,3,1,1,1,9,'ansiedade'),(91,'Alissandra Lima','3243242423','259.918.308-19',0,43,0,8,1,1,2,1,8,'pernas inquietas'),(94,'christina','523523','963.147.852-44',0,35,0,8,3,0,3,1,8,'pernas inquietas'),(96,'Rogério','021313515','285.901.214-55',0,52,1,6,5,0,1,0,5,'insonia'),(97,'Sonia','sonia123','132.984.965-46',0,26,0,6,5,0,1,0,5,'insonia'),(98,'Soninha','544536432','519.626.895-56',0,26,0,2,1,0,0,1,8,'ansiedade'),(99,'SONIÃO','454353454','519.626.895-56',0,29,1,6,5,1,3,1,10,'ansiedade'),(100,'SONINHO','34253453','519.626.895-50',0,29,1,9,6,1,5,1,4,'pernas inquietas'),(101,'cuzin','32342432432','462.986.638-86',0,25,1,5,4,1,3,1,8,'ansiedade');
+UNLOCK TABLES;
+
+
+
+CREATE INDEX `sol_ansiedade_idUsu_idx` ON `sol_ansiedade` (`idUsu`);
+CREATE INDEX `sol_insonia_idUsu_idx` ON `sol_insonia` (`idUsu`);
+CREATE INDEX `sol_paralisiadosono_idUsuParalSono_idx` ON `sol_paralisiadosono` (`idUsu`);
+CREATE INDEX `sol_pesadelos_idusupesadelos_idx` ON `sol_pesadelos` (`idUsu`);
+CREATE INDEX `sol_sindromepernasinquietas_idusuSinPerInquieta_idx` ON `sol_sindromepernasinquietas` (`idUsu`);
+CREATE INDEX `sol_sonambulismo_idusu_idx` ON `sol_sonambulismo` (`idUsu`);
+CREATE INDEX `sol_sonolenciadiurna_idusuSonodiurno_idx` ON `sol_sonolenciadiurna` (`idUsu`);
+
+COMMIT;
+PRAGMA ignore_check_constraints = ON;
+PRAGMA foreign_keys = ON;
+PRAGMA journal_mode = WAL;
+PRAGMA synchronous = NORMAL;

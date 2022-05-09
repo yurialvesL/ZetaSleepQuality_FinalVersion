@@ -1,0 +1,2 @@
+﻿O thread 'MainThread' (0x1) foi fechado com o código 0 (0x0).
+O programa "python.exe" foi fechado com o código -1 (0xffffffff).
